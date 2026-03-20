@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honnika T U | Professional Portfolio</title>
+    <style>
+        /* Professional Corporate Dark Theme */
+        :root {
+            --primary-bg: #0f172a;
+            --secondary-bg: #1e293b;
+            --accent-color: #3b82f6;
+            --accent-hover: #2563eb;
+            --text-main: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        
+        body { background-color: var(--primary-bg); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
+        
+        /* Navigation */
+        header { position: fixed; top: 0; width: 100%; background-color: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border-color); z-index: 1000; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; }
+        
+        /* Fixed Logo Color - Now entirely white */
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--text-main); letter-spacing: 1px; }
+        
+        nav ul { display: flex; gap: 2rem; list-style: none; }
+        nav ul li a { font-size: 0.95rem; font-weight: 500; color: var(--text-secondary); }
+        nav ul li a:hover { color: var(--accent-color); }
+
+        /* General Section Formatting */
+        section { padding: 100px 5% 60px; max-width: 1200px; margin: 0 auto; min-height: auto; }
+        .section-title { font-size: 2.25rem; font-weight: 700; margin-bottom: 3rem; position: relative; padding-bottom: 0.5rem; color: var(--text-main); }
+        .section-title::after { content: ''; position: absolute; left: 0; bottom: 0; height: 3px; width: 60px; background-color: var(--accent-color); }
+
+        /* Hero Section */
+        #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 120px; }
+        .hero-greeting { color: var(--accent-color); font-weight: 600; font-size: 1.1rem; margin-bottom: 1rem; letter-spacing: 2px; text-transform: uppercase; }
+        .hero-name { font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 1rem; color: var(--text-main); }
+        .hero-role { font-size: 2rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 1.5rem; }
+        .hero-summary { max-width: 600px; font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2.5rem; }
+        
+        /* Buttons */
+        .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn { display: inline-block; padding: 0.8rem 2rem; font-size: 1rem; font-weight: 600; border-radius: 4px; transition: all 0.3s ease; text-align: center; }
+        .btn-primary { background-color: var(--accent-color); color: #ffffff; border: 1px solid var(--accent-color); }
+        .btn-primary:hover { background-color: var(--accent-hover); border-color: var(--accent-hover); transform: translateY(-2px); }
+        .btn-outline { background-color: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); }
+        .btn-outline:hover { background-color: rgba(59, 130, 246, 0.1); transform: translateY(-2px); }
+
+        /* About Section */
+        .about-content { display: grid; grid-template-columns: 1fr; gap: 2rem; font-size: 1.1rem; color: var(--text-secondary); }
+        .about-text p { margin-bottom: 1rem; }
+
+        /* Skills Section - Categorized */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .skill-category { background-color: var(--secondary-bg); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color); }
+        .skill-category h3 { font-size: 1.25rem; margin-bottom: 1.5rem; color: var(--text-main); font-weight: 600; }
+        .skill-list { list-style: none; }
+        .skill-list li { margin-bottom: 0.75rem; color: var(--text-secondary); display: flex; align-items: center; }
+        .skill-list li::before { content: '▹'; color: var(--accent-color); margin-right: 10px; font-weight: bold; }
+
+        /* Projects Section */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .project-card { background-color: var(--secondary-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 2rem; transition: transform 0.3s ease; }
+        .project-card:hover { transform: translateY(-5px); border-color: var(--accent-color); }
+        .project-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-main); }
+        .project-desc { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+        /* Experience & Education Timelines */
+        .timeline-item { border-left: 2px solid var(--border-color); padding-left: 2rem; position: relative; margin-bottom: 2.5rem; }
+        .timeline-item::before { content: ''; position: absolute; left: -9px; top: 0; width: 16px; height: 16px; border-radius: 50%; background-color: var(--primary-bg); border: 2px solid var(--accent-color); }
+        .timeline-title { font-size: 1.25rem; font-weight: 600; color: var(--text-main); margin-bottom: 0.25rem; }
+        .timeline-subtitle { font-size: 1rem; color: var(--accent-color); margin-bottom: 0.75rem; font-weight: 500; }
+        .timeline-details { color: var(--text-secondary); font-size: 0.95rem; }
+
+        /* Contact Section */
+        .contact-container { text-align: center; max-width: 600px; margin: 0 auto; padding-bottom: 4rem; }
+        .contact-container p { color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem; }
+        .contact-info { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+        .contact-info a { color: var(--text-main); font-size: 1.1rem; }
+        .contact-info a:hover { color: var(--accent-color); }
+
+        /* Footer */
+        footer { border-top: 1px solid var(--border-color); padding: 2rem 5%; text-align: center; color: var(--text-secondary); font-size: 0.9rem; }
+
+        /* Scroll Animation Classes */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 1rem; }
+            nav ul { margin-top: 1rem; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+            .hero-name { font-size: 2.5rem; }
+            .hero-role { font-size: 1.5rem; }
+            section { padding: 120px 5% 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Honnika T U</div>
+        <nav>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Expertise</a></li>
+                <li><a href="#experience">Leadership</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="reveal">
+            <p class="hero-greeting">Portfolio & Resume</p>
+            <h1 class="hero-name">Honnika T U.</h1>
+            <h2 class="hero-role">Cybersecurity & Software Developer.</h2>
+            <p class="hero-summary">A dedicated technology professional specializing in full-stack software development and cybersecurity protocols. Focused on architecting secure, scalable, and innovative digital solutions.</p>
+            <div class="btn-group">
+                <a href="Honnika_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Full Resume</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title reveal">Professional Summary</h2>
+        <div class="about-content reveal">
+            <div class="about-text">
+                <p>I am currently pursuing a Bachelor of Computer Applications (BCA) with a focused specialization in Cybersecurity (CEH) and Software Development. My academic and practical background bridges the gap between creating robust software applications and ensuring their systemic security.</p>
+                <p>I am highly proficient in object-oriented programming methodologies utilizing Java and Python, alongside full-stack web technologies. Furthermore, my foundational experience in reconnaissance and vulnerability assessment equips me to approach software engineering with a security-first mindset.</p>
+                <p>Beyond technical implementation, I possess a strong track record of leadership and organizational management, demonstrating an aptitude for strategic thinking, effective communication, and cross-functional team coordination.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title reveal">Technical Proficiency</h2>
+        <div class="skills-grid">
+            <div class="skill-category reveal">
+                <h3>Programming Languages</h3>
+                <ul class="skill-list">
+                    <li>Java</li>
+                    <li>Python</li>
+                    <li>C / C++</li>
+                    <li>PHP</li>
+                </ul>
+            </div>
+            <div class="skill-category reveal">
+                <h3>Web Technologies & Databases</h3>
+                <ul class="skill-list">
+                    <li>HTML5 & CSS3</li>
+                    <li>JavaScript</li>
+                    <li>SQL</li>
+                    <li>DBMS Architecture</li>
+                </ul>
+            </div>
+            <div class="skill-category reveal">
+                <h3>Cybersecurity & Infrastructure</h3>
+                <ul class="skill-list">
+                    <li>Network Scanning (Nmap)</li>
+                    <li>OSINT Framework</li>
+                    <li>Kali Linux Environment</li>
+                    <li>Vulnerability Assessment</li>
+                </ul>
+            </div>
+            <div class="skill-category reveal">
+                <h3>Professional Competencies</h3>
+                <ul class="skill-list">
+                    <li>Strategic Leadership</li>
+                    <li>Project Management</li>
+                    <li>Public Speaking & Anchoring</li>
+                    <li>Conflict Resolution</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title reveal">Professional Experience & Leadership</h2>
+        <div class="reveal">
+            <div class="timeline-item">
+                <h3 class="timeline-title">Joint Secretary & Class Representative</h3>
+                <h4 class="timeline-subtitle">Academic Administration</h4>
+                <p class="timeline-details">Spearheaded student-faculty coordination and managed academic updates. Directed event logistics and successfully implemented conflict resolution strategies to support the student body.</p>
+            </div>
+            <div class="timeline-item">
+                <h3 class="timeline-title">Master of Ceremonies (MC)</h3>
+                <h4 class="timeline-subtitle">Professional Anchoring</h4>
+                <p class="timeline-details">Served as the lead anchor for multiple high-capacity events, demonstrating advanced public speaking, schedule management, and audience engagement capabilities.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title reveal">Key Academic Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card reveal">
+                <h3 class="project-title">AgroGuardian AI (Agro Assist)</h3>
+                <p class="project-desc">Engineered an AI-based smart farming architecture to facilitate automated crop recommendations and monitor soil health metrics in real-time.</p>
+            </div>
+            <div class="project-card reveal">
+                <h3 class="project-title">Cybersecurity Assessment Labs</h3>
+                <p class="project-desc">Executed comprehensive vulnerability assessments, network scanning, and reconnaissance utilizing industry-standard tools including Nmap and the OSINT Framework.</p>
+            </div>
+            <div class="project-card reveal">
+                <h3 class="project-title">Event Booking Platform</h3>
+                <p class="project-desc">Developed a full-stack system designed to streamline event registration, secure ticketing, and backend database management.</p>
+            </div>
+            <div class="project-card reveal">
+                <h3 class="project-title">Real-Time News Aggregator</h3>
+                <p class="project-desc">Built a dynamic web application that aggregates, categorizes, and displays real-time news data feeds for optimized user consumption.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2 class="section-title reveal">Academic Background</h2>
+        <div class="reveal">
+            <div class="timeline-item">
+                <h3 class="timeline-title">Bachelor of Computer Applications (BCA)</h3>
+                <h4 class="timeline-subtitle">SSMRV College | 2024 – 2027</h4>
+                <p class="timeline-details">Specialization in Software Development and Cybersecurity.</p>
+            </div>
+            <div class="timeline-item">
+                <h3 class="timeline-title">Pre-University Course (PUC)</h3>
+                <h4 class="timeline-subtitle">St. Francis De Sales PU College</h4>
+                <p class="timeline-details">Graduated with Distinction: 95.6%</p>
+            </div>
+            <div class="timeline-item">
+                <h3 class="timeline-title">Secondary School Leaving Certificate (SSLC)</h3>
+                <h4 class="timeline-subtitle">The Paradise Residential School</h4>
+                <p class="timeline-details">Graduated with Distinction: 94.4%</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-container reveal">
+            <h2 class="section-title" style="margin-bottom: 1.5rem; text-align: center;">Get In Touch</h2>
+            <p>I am currently seeking internship opportunities to contribute my skills in software development and cybersecurity to innovative digital solutions. My inbox is always open.</p>
+            
+            <div class="contact-info">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=honnikatu@gmail.com" target="_blank" rel="noopener noreferrer">✉️ honnikatu@gmail.com</a>
+                <a href="https://linkedin.com/in/honnika-t-u-181175372" target="_blank" rel="noopener noreferrer">💼 LinkedIn Profile</a>
+                <span>📍 Hosa Road, Bengaluru – 560100</span>
+            </div>
+            
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=honnikatu@gmail.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Send an Email</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Honnika T U. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Intersection Observer for professional scroll reveals
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
